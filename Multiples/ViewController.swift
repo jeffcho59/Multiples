@@ -10,16 +10,39 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    //Properties
+    var currentValue = 0
+    var updatedValue = 0
+    
+    //Outlets
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var multipleAddText: UITextField!
+    
+    @IBOutlet weak var pressAddText: UITextView!
+    @IBOutlet weak var math: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    
+    @IBAction func onPlayButtonPressed(sender: UIButton!) {
+        if multipleAddText.text != nil && multipleAddText.text != ""{
+            logo.hidden = true
+            playButton.hidden = true
+            multipleAddText.hidden = true
+            
+            pressAddText.hidden = false
+            math.hidden = true
+            addButton.hidden = false
+            
+            updatedValue()
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func updateValue() {
+        math.text = "\(currentValue) + \(multipleAddText.text) = \(updatedValue)"
+        currentValue = updatedValue
     }
-
 
 }
 
